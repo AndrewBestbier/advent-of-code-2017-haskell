@@ -14,3 +14,11 @@ day1 input
   | head digits == last digits = head digits + summer digits
   | otherwise = summer digits
     where digits = integerToDigits input
+    
+day2 input = sum [ x | (x,y) <- zippedList, x == y]
+  where digits = integerToDigits input
+        size = length digits 
+        infiniteOriginal = cycle digits
+        infiniteAdjusted = cycle $ drop (size `div` 2) infiniteOriginal
+        zippedList = take size $ zip infiniteOriginal infiniteAdjusted
+        
