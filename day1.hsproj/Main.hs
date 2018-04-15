@@ -3,22 +3,16 @@ import Prelude
 integerToDigits :: Integer -> [Int]
 integerToDigits n = map (\x -> read [x] :: Int) (show n)
 
-summer (x:y:[]) 
-  | x == y = x
-  | otherwise = 0
-summer (x:y:zs) 
-  | x == y = x + summer (y:zs)
-  | otherwise = summer (y:zs)
+question1 input = captcha digits 1
+  where digits = integerToDigits input 
 
-day1 input 
-  | head digits == last digits = head digits + summer digits
-  | otherwise = summer digits
-    where digits = integerToDigits input
-    
-day2 input = sum [ x | (x,y) <- zippedList, x == y]
+question2 input = captcha digits dropSize
   where digits = integerToDigits input
-        size = length digits 
+        dropSize = length digits `div` 2    
+
+-- Shared helper function
+captcha digits dropSize = sum [ x | (x,y) <- zippedList, x == y]
+  where size = length digits 
         infiniteOriginal = cycle digits
-        infiniteAdjusted = cycle $ drop (size `div` 2) infiniteOriginal
+        infiniteAdjusted = cycle $ drop dropSize infiniteOriginal
         zippedList = take size $ zip infiniteOriginal infiniteAdjusted
-        
