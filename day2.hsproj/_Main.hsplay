@@ -2,3 +2,8 @@
 withArgs ["--file", "input.txt"] 
   main
 
+[ x - y | x <- [5,9,2,8], y <- [5,9,2,8], x /= y, x `mod` y == 0] !! 0
+
+
+
+evenlyDivisibleDifference ["5","9","2","8"]
