@@ -1,0 +1,7 @@
+-- Haskell Playground 1.0
+withArgs ["--file", "input.txt"] 
+  main
+  
+
+
+Data.List.length [1,2,3,4,5]
