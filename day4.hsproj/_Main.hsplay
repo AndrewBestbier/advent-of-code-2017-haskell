@@ -1,0 +1,6 @@
+-- Haskell Playground 1.0
+withArgs ["--file", "input.txt"] 
+  main
+  
+
+sort "aacbc"
